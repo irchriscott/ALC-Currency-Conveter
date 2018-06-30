@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Currency Conveter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
+    </head>
+    <body>
+        <div class="cc-container">
+            <div class="cc-header"><h3>Currency Conveter</h3></div>
+            <form id="cc-form" method="post" onsubmit="event.preventDefault()">
+                <div class="cc-form-data" style="margin-bottom: 10px;">
+                    <label>Enter Amount : </label>
+                    <input type="number" value="1" min="1" id="cc-amount" />
+                </div>
+                <div class="cc-form-data" style="margin-right: 20px;">
+                    <label>Currency From : </label>
+                    <select id="cc-from-currency"></select>
+                </div>
+                <div class="cc-form-data">
+                    <label>Currency To : </label>
+                    <select id="cc-to-currency"></select>
+                </div>
+                <div class="cc-button"><button type="submit" onclick="event.preventDefault()" id="cc-button">Convert</button></div>
+            </form>
+            <div class="cc-result"><p id="cc-result"></p></div>
+        </div>
+        <script src="js/idb.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
