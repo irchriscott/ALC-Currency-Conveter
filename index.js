@@ -3,7 +3,7 @@ import http from 'http';
 import statics from 'serve-static';
 import path from 'path';
 
-const port = 8008;
+const port = process.env.PORT || 8008;
 const app = express();
 
 app.use(statics(__dirname + '/'));

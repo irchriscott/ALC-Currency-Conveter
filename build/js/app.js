@@ -194,7 +194,7 @@ class CurrencyConveterApp {
 
     _convertCurrency(rate, query) {
         let amount = parseInt(this.view.amount.value);
-        this.view.result.innerText = (amount * rate) + " " + query.split("_")[1]
+        this.view.result.innerText = (amount * rate) + " " + query.split("_")[1];
     }
 
 }

@@ -1,4 +1,4 @@
-# Currency Conveter ALC 3.o
+# Currency Conveter ALC 3.0
 
 The app made for the ALC 3.0 7 days of code 
 
