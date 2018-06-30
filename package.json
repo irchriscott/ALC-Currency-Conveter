@@ -1,0 +1,35 @@
+{
+  "name": "alc-currency-conveter",
+  "version": "1.0.0",
+  "description": "a web app that will convert currencies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node build/bundle.js",
+    "babel": "babel --presets es2015 index.js -o build/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irchriscott/ALC-Currency-Conveter.git"
+  },
+  "author": "Ir Christian Scott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irchriscott/ALC-Currency-Conveter/issues"
+  },
+  "homepage": "https://github.com/irchriscott/ALC-Currency-Conveter#readme",
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "express": "^4.16.3",
+    "idb": "^2.1.3",
+    "serve-static": "^1.13.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "presets": [
+    "env"
+  ]
+}

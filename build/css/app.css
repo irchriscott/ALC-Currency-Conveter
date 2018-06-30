@@ -1,0 +1,77 @@
+/*
+    STYLESHEET FOR  CURRENCY CONVETER
+    Author: Ir Christian Scott
+    Date: 30th June, 2018
+*/
+
+*{
+    font-family: Avenir, Century Gothic, sans-serif;
+    color: #333333;
+}
+
+body{
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.cc-container{
+    background: #dddddd;
+    padding: 20px;
+    margin: 50px auto;
+    border: 2px solid #00c6d7;
+    width: 40%;
+}
+
+.cc-header{
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    margin-bottom: 20px;
+}
+
+.cc-header h3{
+    margin: 0;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.cc-container .cc-button{
+    display: block;
+    text-align: center;
+}
+
+.cc-container button{
+    margin-top: 15px;
+    color: #FFF;
+    padding: 8px 40px;
+    border:none;
+    background: green;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cc-form-data{
+    float: left;
+    width: calc(50% - 14px);
+}
+
+.cc-form-data label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.cc-form-data:first-child{
+    width: calc(100% - (4px + 2rem + 8px));
+}
+
+.cc-form-data select,
+.cc-form-data input{
+    width: 100%;
+    padding: 7px 1rem;
+    font-size: 15px;
+    border: 2px solid #00c6d7;
+}
