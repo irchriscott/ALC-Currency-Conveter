@@ -4,9 +4,12 @@ const BASE_URL_API = "https://free.currencyconverterapi.com/api/v5";
 const html = {
     "from": document.getElementById("cc-from-currency"),
     "to": document.getElementById("cc-to-currency"),
+    "button": document.getElementById("cc-button"),
+    "result": document.getElementById("cc-result"),
+    "amount": document.getElementById("cc-amount")
 }
 
-
+//Init IndexDB
 
 const openIndedDB = () => {
 
@@ -33,6 +36,8 @@ class CurrencyConveterApp {
         this.view = html;
     }
 
+    //Register Service Worker
+
     _registerServiceWorker() {
         if (navigator.serviceWorker) {
             navigator.serviceWorker.register('/sw.js').then(() => {
@@ -42,6 +47,8 @@ class CurrencyConveterApp {
             });
         }
     }
+
+    //Init App Data
 
     _initCurrencies() {
         try {
@@ -68,6 +75,8 @@ class CurrencyConveterApp {
         }
     }
 
+    //Get Rate Of Currencies
+
     async _getConversionRate(){
 
         const query = `${this.view.from.value.toUpperCase()}_${this.view.to.value.toUpperCase()}`;
@@ -78,9 +87,7 @@ class CurrencyConveterApp {
             let rate = new Promise((resolve, _) => {
                 try {
                     return fetch(`${BASE_URL_API}/convert?q=${query}`).then((response) => resolve(response.json()));
-                } catch (error) {
-                    
-                }
+                } catch (error) {}
             });
             rate.then((response) => {
                 this._storeConversions(response.results[query]);
@@ -91,6 +98,8 @@ class CurrencyConveterApp {
             this._convertCurrency(conversion.val, query);
         }
     }
+
+    //Store Currencies In Index DB
 
     _storeCurrencies(currencies) {
         this._idb.then((db) => {
@@ -111,6 +120,8 @@ class CurrencyConveterApp {
         });
     }
 
+    //Store Conversion
+
     _storeConversions(conversion) {
         this._idb.then((db) => {
 
@@ -122,6 +133,8 @@ class CurrencyConveterApp {
         });
     }
 
+    //Get Conversion From Index DB
+
     _getConversionFromIdb(query) {
         return new Promise((resolve, _) => {
             return this._idb.then((db) => {
@@ -132,6 +145,8 @@ class CurrencyConveterApp {
             });
         }).then((response) => response);
     }
+
+    //Get Currencies From Index DB
 
     _getCurrenciesFromIdb() {
         this._idb.then(db => {
@@ -146,6 +161,7 @@ class CurrencyConveterApp {
         });
     }
 
+    //Append Currencies To Template
 
     _appendCurrenciesToView(currencies){
         
@@ -165,8 +181,20 @@ class CurrencyConveterApp {
         }, 2000);
     }
 
+    //Fire Convert Event
+
+    _submitConvertForm(){
+        this.view.button.addEventListener("click", (event) => { 
+            event.preventDefault(); 
+            this._getConversionRate();
+        });
+    }
+
+    //Convert Currencies
+
     _convertCurrency(rate, query) {
-        
+        let amount = parseInt(this.view.amount.value);
+        this.view.result.innerText = (amount * rate) + " " + query.split("_")[1]
     }
 
 }
@@ -174,4 +202,5 @@ class CurrencyConveterApp {
 const app = new CurrencyConveterApp();
 app._registerServiceWorker();
 app._initCurrencies();
+app._submitConvertForm();
 
