@@ -5,6 +5,9 @@ const files = [
     'js/idb.min.js',
     'js/app.js',
     'css/app.css',
+    'build/js/idb.min.js',
+    'build/js/app.js',
+    'build/css/app.css',
 ];
 
 //Add files to caches on sw install
